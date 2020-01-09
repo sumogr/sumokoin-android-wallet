@@ -129,7 +129,7 @@
 		en vare du har kjøpt.
         <h2>TX-ID</h2>
         Dette er transaksjons-IDen din, som du kan bruke til å identifisere transaksjonen din på den obfuskerte Sumokoin blokkjeden, ved å bruke en
-        blokkjedeutforsker som <a href="https://explorer.sumo.fyi/">https://explorer.sumo.fyi/</a>
+        blokkjedeutforsker som <a href="https://explorer.sumokoin.com/">https://explorer.sumokoin.com/</a>
         <h2>TX-nøkkel (Transaksjonsnøkkel)</h2>
         Dette er din private transaksjonsnøkkel. Hold den privat, siden å gi den til en tredjepart
         avslører hvilken signatur i ringen som er din, og gjør derfor transaksjonen din gjennomsiktig.
