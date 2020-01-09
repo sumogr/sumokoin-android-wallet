@@ -29,7 +29,3 @@ The official sumokoin client shows the same behaviour.
 See [the instructions](doc/BUILDING-external-libs.md)
 
 Then, fire up Android Studio and build the APK.
-
-### Donations
-- Address: fh2jc6PbQYd4a5PY3ooPMZiPVniMy4MGcjSRBnoBVc1xLmdCHJ6hc98Ess2hpN2mDgPnCAXtDUUbmjWYutRvdoSr2Nps2o5wc
-- Viewkey: 84a6ac951dccea8aa5c23127f9e69bd71222d64c0b560bbec49a6e6c01df1205
