@@ -12,7 +12,7 @@ else
 fi
 
 orig_path=$PATH
-packages=(boost openssl monero libsodium)
+packages=(boost openssl libsodium)
 
 archs=(arm arm64 x86 x86_64)
 #archs=(x86)
@@ -43,7 +43,7 @@ for arch in ${archs[@]}; do
 		rm -f $OUTPUT_DIR/*.a
 		cp -a $build_dir/$package/$arch/lib/*.a $OUTPUT_DIR
 
-		if [ $package = "monero" ]; then
+		if [ $package = "sumokoin" ]; then
             rm -rf $OUTPUT_DIR/../../include
             cp -a $build_dir/$package/include $OUTPUT_DIR/../..
 		fi		
