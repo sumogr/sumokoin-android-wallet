@@ -7,7 +7,7 @@ source script/env.sh
 cd $EXTERNAL_LIBS_BUILD_ROOT
 
 url="https://github.com/Aris-sumogr/sumokoin/"
-version="sumokoin-android"
+version="master"
 
 if [ ! -d "sumokoin" ]; then
   git clone ${url} -b ${version}
