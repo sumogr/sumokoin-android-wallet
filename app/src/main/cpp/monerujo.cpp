@@ -797,7 +797,7 @@ Java_com_sumokoin_sumowallet_model_Wallet_getDeviceTypeJ(JNIEnv *env, jobject in
     return static_cast<jint>(device_type);
 }
 
-//void cn_slow_hash(const void *data, size_t length, char *hash); // from crypto/hash-ops.h
+//void cn_monero_slow_hash(const void *data, size_t length, char *hash); // from crypto/hash-ops.h
 JNIEXPORT jbyteArray JNICALL
 Java_com_sumokoin_sumowallet_util_KeyStoreHelper_slowHash(JNIEnv *env, jclass clazz,
                                                        jbyteArray data, jint brokenVariant) {
