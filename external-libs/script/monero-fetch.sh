@@ -6,7 +6,7 @@ source script/env.sh
 
 cd $EXTERNAL_LIBS_BUILD_ROOT
 
-url="https://github.com/sumogr/android-dev/sumokoin"
+url="https://github.com/sumogr/sumokoin/android-dev"
 version="sumokoin-android"
 
 if [ ! -d "sumokoin" ]; then
