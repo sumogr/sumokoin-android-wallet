@@ -62,7 +62,7 @@ public class PeerRetriever implements Callable<PeerRetriever> {
         return nodeInfo;
     }
 
-    public boolean isMobile Walletod() {
+    public boolean isGood() {
         return !peers.isEmpty();
     }
 
@@ -71,7 +71,7 @@ public class PeerRetriever implements Callable<PeerRetriever> {
     }
 
     public PeerRetriever call() {
-        if (isMobile Walletod()) // we have already been called?
+        if (isGood()) // we have already been called?
             throw new IllegalStateException();
         // first check for an rpc service
         nodeInfo.findRpcService();
