@@ -21,9 +21,9 @@ import com.burgstaller.okhttp.CachingAuthenticatorDecorator;
 import com.burgstaller.okhttp.digest.CachingAuthenticator;
 import com.burgstaller.okhttp.digest.Credentials;
 import com.burgstaller.okhttp.digest.DigestAuthenticator;
-import com.m2049r.levin.scanner.Dispatcher;
-import com.m2049r.levin.scanner.LevinPeer;
-import com.m2049r.xmrwallet.util.OkHttpHelper;
+import com.sumokoin.levin.scanner.Dispatcher;
+import com.sumokoin.levin.scanner.LevinPeer;
+import com.sumokoin.xmrwallet.util.OkHttpHelper;
 
 import org.json.JSONException;
 import org.json.JSONObject;
