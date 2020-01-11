@@ -54,7 +54,7 @@ extern "C"
 {
 #endif
 
-extern const char* const MONERO_VERSION; // the actual monero core version
+extern const char* const SUMOKOIN_VERSION; // the actual monero core version
 
 // from monero-core crypto/hash-ops.h - avoid #including monero code here
 enum {
