@@ -16,6 +16,8 @@
 
 package com.sumokoin.sumowallet;
 
+package com.sumokoin.sumowallet;
+
 import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -87,8 +89,7 @@ public class LoginActivity extends BaseActivity
     private static final String NODES_PREFS_NAME = "nodes";
     private static final String PREF_DAEMON_STAGENET = "daemon_stagenet";
     private static final String PREF_DAEMON_MAINNET = "daemon_mainnet";
-    private static final String DEFAULT_DAEMONLIST_MAINNET = "167.172.44.84:19734";
-        
+
     private NodeInfo node = null;
 
     Set<NodeInfo> favouriteNodes = new HashSet<>();
@@ -157,7 +158,6 @@ public class LoginActivity extends BaseActivity
             SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
             switch (WalletManager.getInstance().getNetworkType()) {
                 case NetworkType_Mainnet:
-                    loadLegacyList(DEFAULT_DAEMONLIST_MAINNET);
                     loadLegacyList(sharedPref.getString(PREF_DAEMON_MAINNET, null));
                     sharedPref.edit().remove(PREF_DAEMON_MAINNET).apply();
                     break;
@@ -1209,9 +1209,6 @@ public class LoginActivity extends BaseActivity
             case R.id.action_license_info:
                 AboutFragment.display(getSupportFragmentManager());
                 return true;
-            case R.id.action_license_credit:
-                CreditsFragment.display(getSupportFragmentManager());
-                return true;
             case R.id.action_help_list:
                 HelpFragment.display(getSupportFragmentManager(), R.string.help_list);
                 return true;
@@ -1323,7 +1320,7 @@ public class LoginActivity extends BaseActivity
 
     // USB Stuff - (Ledger)
 
-    private static final String ACTION_USB_PERMISSION = "com.sumokoin.sumowallet.USB_PERMISSION";
+    private static final String ACTION_USB_PERMISSION = "com.m2049r.xmrwallet.USB_PERMISSION";
 
     void attachLedger() {
         final UsbManager usbManager = getUsbManager();
