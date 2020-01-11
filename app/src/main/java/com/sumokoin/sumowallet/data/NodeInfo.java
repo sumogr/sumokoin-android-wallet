@@ -16,318 +16,255 @@
 
 package com.sumokoin.sumowallet.data;
 
-import com.sumokoin.sumowallet.model.NetworkType;
-import com.sumokoin.sumowallet.model.WalletManager;
+import com.burgstaller.okhttp.AuthenticationCacheInterceptor;
+import com.burgstaller.okhttp.CachingAuthenticatorDecorator;
+import com.burgstaller.okhttp.digest.CachingAuthenticator;
+import com.burgstaller.okhttp.digest.Credentials;
+import com.burgstaller.okhttp.digest.DigestAuthenticator;
+import com.m2049r.levin.scanner.Dispatcher;
+import com.m2049r.levin.scanner.LevinPeer;
+import com.m2049r.xmrwallet.util.OkHttpHelper;
 
-mport java.io.UnsupportedEncodingException;
-import java.net.InetAddress;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.net.InetSocketAddress;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
-import java.net.UnknownHostException;
+import java.net.SocketAddress;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
+import okhttp3.HttpUrl;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 import timber.log.Timber;
 
-public class Node {
-    static public final String MAINNET = "mainnet";
-    static public final String STAGENET = "stagenet";
-    static public final String TESTNET = "testnet";
+public class NodeInfo extends Node {
+    final static public int MIN_MAJOR_VERSION = 9;
+    final static public String RPC_VERSION = "2.0";
 
-    private String name = null;
-    final private NetworkType networkType;
-    InetAddress hostAddress;
-    private String host;
-    int rpcPort = 0;
-    private int levinPort = 0;
-    private String username = "";
-    private String password = "";
-    private boolean favourite = false;
+    private long height = 0;
+    private long timestamp = 0;
+    private int majorVersion = 0;
+    private double responseTime = Double.MAX_VALUE;
+    private int responseCode = 0;
 
-    @Override
-    public int hashCode() {
-        return hostAddress.hashCode();
+    public void clear() {
+        height = 0;
+        majorVersion = 0;
+        responseTime = Double.MAX_VALUE;
+        responseCode = 0;
+        timestamp = 0;
     }
 
-    // Nodes are equal if they are the same host address & are on the same network
-    @Override
-    public boolean equals(Object other) {
-        if (!(other instanceof Node)) return false;
-        final Node anotherNode = (Node) other;
-        return (hostAddress.equals(anotherNode.hostAddress) && (networkType == anotherNode.networkType));
-    }
-
-    static public Node fromString(String nodeString) {
+    static public NodeInfo fromString(String nodeString) {
         try {
-            return new Node(nodeString);
+            return new NodeInfo(nodeString);
         } catch (IllegalArgumentException ex) {
             Timber.w(ex);
             return null;
         }
     }
 
-    Node(String nodeString) {
-        if ((nodeString == null) || nodeString.isEmpty())
-            throw new IllegalArgumentException("daemon is empty");
-        String daemonAddress;
-        String a[] = nodeString.split("@");
-        if (a.length == 1) { // no credentials
-            daemonAddress = a[0];
-            username = "";
-            password = "";
-        } else if (a.length == 2) { // credentials
-            String userPassword[] = a[0].split(":");
-            if (userPassword.length != 2)
-                throw new IllegalArgumentException("User:Password invalid");
-            username = userPassword[0];
-            if (!username.isEmpty()) {
-                password = userPassword[1];
-            } else {
-                password = "";
-            }
-            daemonAddress = a[1];
-        } else {
-            throw new IllegalArgumentException("Too many @");
-        }
-
-        String daParts[] = daemonAddress.split("/");
-        if ((daParts.length > 3) || (daParts.length < 1))
-            throw new IllegalArgumentException("Too many '/' or too few");
-
-        daemonAddress = daParts[0];
-        String da[] = daemonAddress.split(":");
-        if ((da.length > 2) || (da.length < 1))
-            throw new IllegalArgumentException("Too many ':' or too few");
-        String host = da[0];
-
-        if (daParts.length == 1) {
-            networkType = NetworkType.NetworkType_Mainnet;
-        } else {
-            switch (daParts[1]) {
-                case MAINNET:
-                    networkType = NetworkType.NetworkType_Mainnet;
-                    break;
-                case STAGENET:
-                    networkType = NetworkType.NetworkType_Stagenet;
-                    break;
-                case TESTNET:
-                    networkType = NetworkType.NetworkType_Testnet;
-                    break;
-                default:
-                    throw new IllegalArgumentException("invalid net: " + daParts[1]);
-            }
-        }
-        if (networkType != WalletManager.getInstance().getNetworkType())
-            throw new IllegalArgumentException("wrong net: " + networkType);
-
-        String name = host;
-        if (daParts.length == 3) {
-            try {
-                name = URLDecoder.decode(daParts[2], "UTF-8");
-            } catch (UnsupportedEncodingException ex) {
-                Timber.w(ex); // if we can't encode it, we don't use it
-            }
-        }
-        this.name = name;
-
-        int port;
-        if (da.length == 2) {
-            try {
-                port = Integer.parseInt(da[1]);
-            } catch (NumberFormatException ex) {
-                throw new IllegalArgumentException("Port not numeric");
-            }
-        } else {
-            port = getDefaultRpcPort();
-        }
-        try {
-            setHost(host);
-        } catch (UnknownHostException ex) {
-            throw new IllegalArgumentException("cannot resolve host " + host);
-        }
-        this.rpcPort = port;
-        this.levinPort = getDefaultLevinPort();
-    }
-
-    public String toNodeString() {
-        return toString();
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        if (!username.isEmpty() && !password.isEmpty()) {
-            sb.append(username).append(":").append(password).append("@");
-        }
-        sb.append(host).append(":").append(rpcPort);
-        sb.append("/");
-        switch (networkType) {
-            case NetworkType_Mainnet:
-                sb.append(MAINNET);
-                break;
-            case NetworkType_Stagenet:
-                sb.append(STAGENET);
-                break;
-            case NetworkType_Testnet:
-                sb.append(TESTNET);
-                break;
-        }
-        if (name != null)
-            try {
-                sb.append("/").append(URLEncoder.encode(name, "UTF-8"));
-            } catch (UnsupportedEncodingException ex) {
-                Timber.w(ex); // if we can't encode it, we don't store it
-            }
-        return sb.toString();
-    }
-
-    public Node() {
-        this.networkType = WalletManager.getInstance().getNetworkType();
-    }
-
-    // constructor used for created nodes from retrieved peer lists
-    public Node(InetSocketAddress socketAddress) {
-        this();
-        this.hostAddress = socketAddress.getAddress();
-        this.host = socketAddress.getHostString();
-        this.rpcPort = 0; // unknown
-        this.levinPort = socketAddress.getPort();
-        this.username = "";
-        this.password = "";
-        //this.name = socketAddress.getHostName(); // triggers DNS so we don't do it by default
-    }
-
-    public String getAddress() {
-        return getHostAddress() + ":" + rpcPort;
-    }
-
-    public String getHostAddress() {
-        return hostAddress.getHostAddress();
-    }
-
-    public String getHost() {
-        return host;
-    }
-
-    public int getRpcPort() {
-        return rpcPort;
-    }
-
-    public void setHost(String host) throws UnknownHostException {
-        if ((host == null) || (host.isEmpty()))
-            throw new UnknownHostException("loopback not supported (yet?)");
-        this.host = host;
-        this.hostAddress = InetAddress.getByName(host);
-    }
-
-    public void setUsername(String user) {
-        username = user;
-    }
-
-    public void setPassword(String pass) {
-        password = pass;
-    }
-
-    public void setRpcPort(int port) {
-        this.rpcPort = port;
-    }
-
-    public void setName() {
-        if (name == null)
-            this.name = hostAddress.getHostName();
-    }
-
-    public void setName(String name) {
-        if ((name == null) || (name.isEmpty()))
-            this.name = hostAddress.getHostName();
-        else
-            this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public NetworkType getNetworkType() {
-        return networkType;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public boolean isFavourite() {
-        return favourite;
-    }
-
-    public void setFavourite(boolean favourite) {
-        this.favourite = favourite;
-    }
-
-    public void toggleFavourite() {
-        favourite = !favourite;
-    }
-
-    public Node(Node anotherNode) {
-        networkType = anotherNode.networkType;
+    public NodeInfo(NodeInfo anotherNode) {
+        super(anotherNode);
         overwriteWith(anotherNode);
     }
 
-    public void overwriteWith(Node anotherNode) {
-        if (networkType != anotherNode.networkType)
-            throw new IllegalStateException("network types do not match");
-        name = anotherNode.name;
-        hostAddress = anotherNode.hostAddress;
-        host = anotherNode.host;
-        rpcPort = anotherNode.rpcPort;
-        levinPort = anotherNode.levinPort;
-        username = anotherNode.username;
-        password = anotherNode.password;
-        favourite = anotherNode.favourite;
+    private SocketAddress levinSocketAddress = null;
+
+    synchronized public SocketAddress getLevinSocketAddress() {
+        if (levinSocketAddress == null) {
+            // use default peer port if not set - very few peers use nonstandard port
+            levinSocketAddress = new InetSocketAddress(hostAddress, getDefaultLevinPort());
+        }
+        return levinSocketAddress;
     }
 
-    static private int DEFAULT_LEVIN_PORT = 0;
-
-    // every node knows its network, but they are all the same
-    static public int getDefaultLevinPort() {
-        if (DEFAULT_LEVIN_PORT > 0) return DEFAULT_LEVIN_PORT;
-        switch (WalletManager.getInstance().getNetworkType()) {
-            case NetworkType_Mainnet:
-                DEFAULT_LEVIN_PORT = 19733;
-                break;
-            case NetworkType_Testnet:
-                DEFAULT_LEVIN_PORT = 297330;
-                break;
-            case NetworkType_Stagenet:
-                DEFAULT_LEVIN_PORT = 39733;
-                break;
-            default:
-                throw new IllegalStateException("unsupported net " + WalletManager.getInstance().getNetworkType());
-        }
-        return DEFAULT_LEVIN_PORT;
+    @Override
+    public int hashCode() {
+        return super.hashCode();
     }
 
-    static private int DEFAULT_RPC_PORT = 0;
+    @Override
+    public boolean equals(Object other) {
+        return super.equals(other);
+    }
 
-    // every node knows its network, but they are all the same
-    static public int getDefaultRpcPort() {
-        if (DEFAULT_RPC_PORT > 0) return DEFAULT_RPC_PORT;
-        switch (WalletManager.getInstance().getNetworkType()) {
-            case NetworkType_Mainnet:
-                DEFAULT_RPC_PORT = 19734;
-                break;
-            case NetworkType_Testnet:
-                DEFAULT_RPC_PORT = 29734;
-                break;
-            case NetworkType_Stagenet:
-                DEFAULT_RPC_PORT = 39734;
-                break;
-            default:
-                throw new IllegalStateException("unsupported net " + WalletManager.getInstance().getNetworkType());
+    public NodeInfo(String nodeString) {
+        super(nodeString);
+    }
+
+    public NodeInfo(LevinPeer levinPeer) {
+        super(levinPeer.getSocketAddress());
+    }
+
+    public NodeInfo(InetSocketAddress address) {
+        super(address);
+    }
+
+    public NodeInfo() {
+        super();
+    }
+
+    public long getHeight() {
+        return height;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    public int getMajorVersion() {
+        return majorVersion;
+    }
+
+    public double getResponseTime() {
+        return responseTime;
+    }
+
+    public int getResponseCode() {
+        return responseCode;
+    }
+
+    public boolean isSuccessful() {
+        return (responseCode >= 200) && (responseCode < 300);
+    }
+
+    public boolean isUnauthorized() {
+        return responseCode == HttpURLConnection.HTTP_UNAUTHORIZED;
+    }
+
+    public boolean isValid() {
+        return isSuccessful() && (majorVersion >= MIN_MAJOR_VERSION) && (responseTime < Double.MAX_VALUE);
+    }
+
+    static public Comparator<NodeInfo> BestNodeComparator = new Comparator<NodeInfo>() {
+        @Override
+        public int compare(NodeInfo o1, NodeInfo o2) {
+            if (o1.isValid()) {
+                if (o2.isValid()) { // both are valid
+                    // higher node wins
+                    int heightDiff = (int) (o2.height - o1.height);
+                    if (Math.abs(heightDiff) > Dispatcher.HEIGHT_WINDOW)
+                        return heightDiff;
+                    // if they are (nearly) equal, faster node wins
+                    return (int) Math.signum(o1.responseTime - o2.responseTime);
+                } else {
+                    return -1;
+                }
+            } else {
+                return 1;
+            }
         }
-        return DEFAULT_RPC_PORT;
+    };
+
+    public void overwriteWith(NodeInfo anotherNode) {
+        super.overwriteWith(anotherNode);
+        height = anotherNode.height;
+        timestamp = anotherNode.timestamp;
+        majorVersion = anotherNode.majorVersion;
+        responseTime = anotherNode.responseTime;
+        responseCode = anotherNode.responseCode;
+    }
+
+    public String toNodeString() {
+        return super.toString();
+    }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(super.toString());
+        sb.append("?rc=").append(responseCode);
+        sb.append("?v=").append(majorVersion);
+        sb.append("&h=").append(height);
+        sb.append("&ts=").append(timestamp);
+        if (responseTime < Double.MAX_VALUE) {
+            sb.append("&t=").append(responseTime).append("ms");
+        }
+        return sb.toString();
+    }
+
+    private static final int HTTP_TIMEOUT = OkHttpHelper.HTTP_TIMEOUT;
+    public static final double PING_GOOD = HTTP_TIMEOUT / 3; //ms
+    public static final double PING_MEDIUM = 2 * PING_GOOD; //ms
+    public static final double PING_BAD = HTTP_TIMEOUT;
+
+    public boolean testRpcService() {
+        return testRpcService(rpcPort);
+    }
+
+    private boolean testRpcService(int port) {
+        clear();
+        try {
+            OkHttpClient client = OkHttpHelper.getEagerClient();
+            if (!getUsername().isEmpty()) {
+                final DigestAuthenticator authenticator =
+                        new DigestAuthenticator(new Credentials(getUsername(), getPassword()));
+                final Map<String, CachingAuthenticator> authCache = new ConcurrentHashMap<>();
+                client = client.newBuilder()
+                        .authenticator(new CachingAuthenticatorDecorator(authenticator, authCache))
+                        .addInterceptor(new AuthenticationCacheInterceptor(authCache))
+                        .build();
+            }
+            HttpUrl url = new HttpUrl.Builder()
+                    .scheme("http")
+                    .host(getHostAddress())
+                    .port(port)
+                    .addPathSegment("json_rpc")
+                    .build();
+            final RequestBody reqBody = RequestBody
+                    .create(MediaType.parse("application/json"),
+                            "{\"jsonrpc\":\"2.0\",\"id\":\"0\",\"method\":\"getlastblockheader\"}");
+            Request request = OkHttpHelper.getPostRequest(url, reqBody);
+            long ta = System.nanoTime();
+            try (Response response = client.newCall(request).execute()) {
+                responseTime = (System.nanoTime() - ta) / 1000000.0;
+                responseCode = response.code();
+                if (response.isSuccessful()) {
+                    ResponseBody respBody = response.body(); // closed through Response object
+                    if ((respBody != null) && (respBody.contentLength() < 2000)) { // sanity check
+                        final JSONObject json = new JSONObject(
+                                respBody.string());
+                        String rpcVersion = json.getString("jsonrpc");
+                        if (!RPC_VERSION.equals(rpcVersion))
+                            return false;
+                        final JSONObject result = json.getJSONObject("result");
+                        if (!result.has("credits")) // introduced in monero v0.15.0
+                            return false;
+                        final JSONObject header = result.getJSONObject("block_header");
+                        height = header.getLong("height");
+                        timestamp = header.getLong("timestamp");
+                        majorVersion = header.getInt("major_version");
+                        return true; // success
+                    }
+                }
+            }
+        } catch (IOException | JSONException ex) {
+            // failure
+            Timber.d(ex.getMessage());
+        }
+        return false;
+    }
+
+    static final private int[] TEST_PORTS = {19734}; // check only opt-in port
+
+    public boolean findRpcService() {
+        // if already have an rpcPort, use that
+        if (rpcPort > 0) return testRpcService(rpcPort);
+        // otherwise try to find one
+        for (int port : TEST_PORTS) {
+            if (testRpcService(port)) { // found a service
+                this.rpcPort = port;
+                return true;
+            }
+        }
+        return false;
     }
 }
