@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="help_create_new"><![CDATA[
         <h1>Creează Portofel - Nou</h1>
@@ -6,7 +6,7 @@
         <p>Introdu un nume unic al portofelului și o parolă. Parola este folosită pentru a securiza informațiile portofelului
 		de pe dispozitiv. Folosește o parola dificilă - folosește chiar o frază.</p>
         <h2>Notează-ți Semnătura Mnemonică!</h2>
-        <p>În următorul ecran vor fi afișate 25 de cuvinte care reprezintă \"Semnătura Mnemonică\".
+        <p>În următorul ecran vor fi afișate 26 de cuvinte care reprezintă \"Semnătura Mnemonică\".
         Aceasta este singura informație necesară pentru recuperarea portofelului tău într-un moment ulterior și obținerea
 		accesului deplin la fondurile tale. Păstrarea acesteia într-un mediu privat și securizat este foarte importantă,
 		deoarece va permite <em>oricui</em> acces total la fondurile tale!</p>

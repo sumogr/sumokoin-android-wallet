@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="help_create_new"><![CDATA[
         <h1>Créer un Portefeuille - Nouveau</h1>
@@ -7,7 +7,7 @@
         Le mot de passe permet de sécuriser les données de votre portefeuille sur votre appareil.
         Utilisez un mot de passe fort - mieux, utilisez une phrase secrète.</p>
         <h2>Notez votre phrase Mnémonique !</h2>
-        <p>Sur l’écran suivant vous trouverez les 25 mots de votre \"Phrase Mnémonique\".
+        <p>Sur l’écran suivant vous trouverez les 26 mots de votre \"Phrase Mnémonique\".
         C’est la seule donnée necessaire pour récupérer votre portefeuille ultérieurement
         et obtenir l’accès à vos fonds.
         Il est très imprtant de la garder sécurisée et confidentielle, car elle donne

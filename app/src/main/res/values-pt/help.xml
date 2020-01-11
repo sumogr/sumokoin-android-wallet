@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="help_create_new"><![CDATA[
         <h1>Criar Carteira - Nova</h1>
@@ -7,7 +7,7 @@
         A palavra passe é utilizada para proteger os dados da carteira. Utiliza uma passe forte -
         melhor ainda é utilizar uma frase passe.</p>
         <h2>Toma nota da tua Semente Mnemónica!</h2>
-        <p>No próximo ecrã vai estar a tua \"Semente Mnemónica\" de 25 palavras.
+        <p>No próximo ecrã vai estar a tua \"Semente Mnemónica\" de 26 palavras.
         Esta semente é suficiente para recuperar a tua carteira mais tarde
         e ganhar total acesso aos teus fundos.
         Mantê-la segura e privada é muito importante, já que pode dar acesso total aos

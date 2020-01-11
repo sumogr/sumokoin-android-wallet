@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="help_create_new"><![CDATA[
         <h1>Crea un portafoglio - Nuovo</h1>
@@ -6,7 +6,7 @@
         <p>Inserisci nome e password del portafoglio.
         La password viene usata per rendere sicuri i dati del portafoglio sul tuo dispositivo. Utilizza una password efficace - meglio se una passphrase.</p>
         <h2>Prendi nota del tuo Seed Mnemonico!</h2>
-        <p>Sulla schermata successiva troverai il tuo \"Seed Mnemonico\" da 25 parole.
+        <p>Sulla schermata successiva troverai il tuo \"Seed Mnemonico\" da 26 parole.
 		Questa è l&apos;unica informazione necessaria per recuperare il tuo portafoglio d&apos;ora in poi
 		e avere pieno accesso ai tuoi fondi.
 		E&apos; molto importante mantenerlo privato e conservarlo in un luogo sicuro, poiché può concedere a <em>chiunque</em>

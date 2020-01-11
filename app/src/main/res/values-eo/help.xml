@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="help_create_new"><![CDATA[
         <h1>Krei monujon - Nova</h1>
@@ -7,7 +7,7 @@
         La pasvorto estas uzita por sekurigi la datumojn de via monujo sur via aparato. Uzu fortan
         pasvorton - eĉ pli bone, uzu pasfrazon.</p>
         <h2>Skribu vian mnemonikan semon surpapere!</h2>
-        <p>Sur la venonta ekrano, vi trovos vian 25-vortan \"mnemonikan semon\".
+        <p>Sur la venonta ekrano, vi trovos vian 26-vortan \"mnemonikan semon\".
         Estas la nura datumo, kiu bezoniĝos por restaŭri vian monujon en la estonteco, kaj reiĝi
         estro de via mono!
         <p>Se vi perdas la pasvorton de via monujo, vi tamen povos restaŭri vian monujon per

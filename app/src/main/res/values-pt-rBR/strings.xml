@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="pt-rBR">
+﻿<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="pt-rBR">
     <string name="wallet_activity_name">Carteira</string>
 
     <string name="menu_about">Sobre</string>
@@ -208,7 +208,7 @@
 
     <string name="generate_check_key">Escreva uma chave válida</string>
     <string name="generate_check_address">Escreva um endereço válido</string>
-    <string name="generate_check_mnemonic">Escreva a semente de 25 palavras</string>
+    <string name="generate_check_mnemonic">Escreva a semente de 26 palavras</string>
 
     <string name="send_amount_btc_xmr">%1$s (indicativo)</string>
 

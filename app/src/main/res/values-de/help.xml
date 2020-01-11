@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="help_create_new"><![CDATA[
         <h1>Wallet erstellen – Neu</h1>
@@ -7,7 +7,7 @@
         Das Passwort schützt deine Wallet-Daten auf dem Gerät. Benutze ein starkes Passwort –
         eine Passwortphrase ist sogar noch besser.</p>
         <h2>Notiere dir deinen mnemonischen Seed!</h2>
-        <p>Auf dem folgenden Bildschirm findest du deinen, aus 25 Wörtern bestehenden, \"Mnemonischen Seed\".
+        <p>Auf dem folgenden Bildschirm findest du deinen, aus 26 Wörtern bestehenden, \"Mnemonischen Seed\".
         Dies sind die einzigen Daten, die du benötigst, um dein Wallet zu einem späteren 
 	Zeitpunkt wiederherzustellen und vollen Zugriff auf deine Gelder zu erhalten.
         Diese Daten geheim und sicher aufzubewahren ist sehr wichtig, da sie <em>jedem</em>

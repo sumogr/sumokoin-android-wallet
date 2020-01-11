@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="help_create_new"><![CDATA[
         <h1>Tárcalétrehozás - új</h1>
@@ -7,7 +7,7 @@
         A jelszó a tárcaadataidnak az eszközön való biztosítására szolgál. Használj erős jelszót, de
         még jobb a jelmondat használata.</p>
         <h2>Jegyezd le a mnemonikus magot!</h2>
-        <p>A következő oldalon találod a 25 szóból álló úgynevezett mnemonikus magot.
+        <p>A következő oldalon találod a 26 szóból álló úgynevezett mnemonikus magot.
         Ez az egyetlen adat, mely a tárcád későbbi visszaállításához és a pénzedhez való újbóli hozzáféréshez
         szükséges. Titokban és biztonságban tartása rendkívül fontos, ugyanis ennek ismeretében <em>bárki</em>
         teljes hozzáférést szerezhet a Moneródhoz.</p>

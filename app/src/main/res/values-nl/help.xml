@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="help_create_new"><![CDATA[
         <h1>Portemonnee maken - Nieuw</h1>
@@ -6,7 +6,7 @@
         <p>Voer een unieke naam en wachtwoord in.
         Met het wachtwoord worden de gegevens in je portemonnee op dit apparaat beveiligd. Gebruik een sterk wachtwoord - of liever een wachtzin van meerdere woorden.</p>
         <h2>Schrijf je hersteltekst op!</h2>
-        <p>Op het volgende scherm wordt de hersteltekst (\"mnemonic seed\") van 25 woorden getoond.
+        <p>Op het volgende scherm wordt de hersteltekst (\"mnemonic seed\") van 26 woorden getoond.
         Dit is het enige dat je nodig hebt om later je portemonnee te herstellen en volledige toegang tot je geld te krijgen.
         Het is belangrijk om deze gegevens verborgen te houden, want hiermee kan <em>iedereen</em> volledige toegang tot je portemonnee krijgen, met alle gevolgen van dien.</p>
         <p>Als je het wachtwoord van je portemonnee kwijtraakt, kun je nog steeds je portemonnee herstellen met de hersteltekst.</p>

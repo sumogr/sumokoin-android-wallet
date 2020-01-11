@@ -174,7 +174,7 @@
     <string name="generate_address_hint">Δημόσια Διεύθυνση(Public Address)</string>
     <string name="generate_viewkey_hint">Κλειδί Προβολής(View Key)</string>
     <string name="generate_spendkey_hint">Κλειδί Ξοδεύματος(Spend Key)</string>
-    <string name="generate_mnemonic_hint">Μνημονικός Σπόρος(Mnemonic Seed) 25-Λέξεων</string>
+    <string name="generate_mnemonic_hint">Μνημονικός Σπόρος(Mnemonic Seed) 26-Λέξεων</string>
     <string name="generate_restoreheight_hint">Ύψος ανάκτησης ή Ημερομηνία (YYYY-MM-DD δλδ χρονιά-μήνας-μέρα)</string>
 
     <string name="generate_address_label">Δημόσια Διεύθυνση(Public Address)</string>
@@ -184,7 +184,7 @@
 
     <string name="generate_check_key">Δώστε έγκυρο κλειδί</string>
     <string name="generate_check_address">Δώστε έγκυρη διεύθυνση</string>
-    <string name="generate_check_mnemonic">Βάλε τον σπόρο σου 25-λέξεων</string>
+    <string name="generate_check_mnemonic">Βάλε τον σπόρο σου 26-λέξεων</string>
 
     <string name="send_amount_btc_xmr">%1$s (ενδεικτικό)</string>
 
@@ -262,7 +262,7 @@
     <string name="fab_create_new">Δημιουργία νέου πορτοφολιού</string>
     <string name="fab_restore_viewonly">Επαναφορά πορτοφολιού προβολής-μόνο</string>
     <string name="fab_restore_key">Επαναφορά πορτοφολιού από ιδιωτικά κλειδιά</string>
-    <string name="fab_restore_seed">Επαναφορά πορτοφολιού από σπόρο 25-λέξεων</string>
+    <string name="fab_restore_seed">Επαναφορά πορτοφολιού από σπόρο 26-λέξεων</string>
 
     <string name="menu_changepw">Change Passphrase</string>
     <string name="changepw_progress">Change Password in progress</string>

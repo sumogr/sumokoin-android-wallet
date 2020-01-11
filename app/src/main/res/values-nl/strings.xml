@@ -1,4 +1,4 @@
-<resources>
+﻿<resources>
     <string name="wallet_activity_name">Portemonnee</string>
 
     <string name="menu_about">Info</string>
@@ -195,7 +195,7 @@
     <string name="generate_address_hint">Openbaar adres</string>
     <string name="generate_viewkey_hint">Alleen-lezen sleutel</string>
     <string name="generate_spendkey_hint">Bestedingssleutel</string>
-    <string name="generate_mnemonic_hint">Hersteltekst van 25 woorden</string>
+    <string name="generate_mnemonic_hint">Hersteltekst van 26 woorden</string>
     <string name="generate_restoreheight_hint">Herstelpunt of datum (JJJJ-MM-DD)</string>
 
     <string name="generate_address_label">Openbaar adres</string>

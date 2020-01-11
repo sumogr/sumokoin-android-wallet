@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="help_create_new"><![CDATA[
         <h1>Lage lommebok - Ny</h1>
@@ -7,7 +7,7 @@
         Passordet blir brukt til å sikre lommebokdataene på enheten. Bruk et sterkt passord -
         helst en passordfrase.</p>
         <h2>Noter ditt mnemoniske seed!</h2>
-        <p>På neste side vil du finne ditt 25 ord lange \"Mnemonisk Seed\".
+        <p>På neste side vil du finne ditt 26 ord lange \"Mnemonisk Seed\".
         Dette er den eneste dataen du trenger for å gjenopprette lommeboken din senere,
 		og få tilgang til alle pengene dine.
         Det er veldig viktig å holde dette sikkert, siden det gir <em>hvem som helst</em>

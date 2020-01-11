@@ -195,7 +195,7 @@
     <string name="generate_address_hint">Avalik aadress</string>
     <string name="generate_viewkey_hint">Vaatamise võti</string>
     <string name="generate_spendkey_hint">Kulutamise võti</string>
-    <string name="generate_mnemonic_hint">25-sõnaline mnemooniline seeme</string>
+    <string name="generate_mnemonic_hint">26-sõnaline mnemooniline seeme</string>
     <string name="generate_restoreheight_hint">Taastamise plokinumber või kuupäev (YYYY-MM-DD)</string>
 
     <string name="generate_address_label">Avalik aadress</string>
@@ -206,7 +206,7 @@
 
     <string name="generate_check_key">Sisesta korrektne võti</string>
     <string name="generate_check_address">Sisesta korrektne  aadress</string>
-    <string name="generate_check_mnemonic">Sisesta oma 25-sõnaline seeme</string>
+    <string name="generate_check_mnemonic">Sisesta oma 26-sõnaline seeme</string>
 
     <string name="send_amount_btc_xmr">%1$s (umbkaudne)</string>
 
@@ -289,7 +289,7 @@
     <string name="fab_create_new">Loo uus rahakott</string>
     <string name="fab_restore_viewonly">Taasta rahakott vaatamiseks</string>
     <string name="fab_restore_key">Taasta rahakott privaatvõtmetest</string>
-    <string name="fab_restore_seed">Taasta rahakott 25-sõnalisest seemnest</string>
+    <string name="fab_restore_seed">Taasta rahakott 26-sõnalisest seemnest</string>
 
     <string name="accounts_drawer_new">Loo konto</string>
     <string name="accounts_new">Uus konto lisatud #%1$d</string>

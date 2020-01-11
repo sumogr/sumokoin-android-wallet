@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="help_create_new"><![CDATA[
         <h1>Crear Portamonedes - New</h1>
@@ -6,7 +6,7 @@
         <p>Introduïu un nom i contrasenya únics del portamonedes.
          La contrasenya s’utilitza per protegir les dades del seu portamonedes en el dispositiu. Utilitzeu una contrasenya sòlida - encara millor si utiliza una frase.</p>
         <h2>Apunteu la vostra llavor mnemotècnica!</h2>
-        <p>A la pantalla següent trobareu la vostra "Llavor Mnemotècnica" de 25 paraules.
+        <p>A la pantalla següent trobareu la vostra "Llavor Mnemotècnica" de 26 paraules.
          Aquestes són les úniques dades necessàries per a recuperar el vostre portamonedes i obtenir accés total als vostres fons.
          Mantenir-la segura i privada és molt important ja que permet que <em> qualsevol persona</em> tingui accés total als vostres fons!.</p>
         <p>Si perdeu la contrasenya del portamonedes encara podrieu recuperar-lo amb la llavor Mnemotècnica.</p>

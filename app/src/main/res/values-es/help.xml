@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="help_create_new"><![CDATA[
         <h1>Crear nuevo monedero</h1>
@@ -7,7 +7,7 @@
         La contraseña es utilizada para proteger los datos de tu monedero en el dispositivo.
         Utiliza una contraseña fuerte - incluso mejor si utilizas una frase.</p>
         <h2>¡Anota tu semilla!</h2>
-        <p>En la siguiente pantalla encontrarás tu \"Semilla\" de 25 palabras.
+        <p>En la siguiente pantalla encontrarás tu \"Semilla\" de 26 palabras.
         Este es el único dato necesario para recuperar tu cartera en un futuro y obtener acceso
         completo a tus fondos.
         ¡Mantenerla segura y privada es muy importante, ya que permite a <em>quien sea</em>

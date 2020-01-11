@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="help_create_new"><![CDATA[
         <h1>Skapa Plånbok - Ny</h1>
@@ -6,7 +6,7 @@
         <p>Ange ett unikt plånboksnamn och lösenord. Lösenordet används för att hålla din plånboksdata säker på enheten.
         Använd ett starkt lösenord - eller ännu bättre, använd en lösenfras.<p>
         <h2>Anteckna ditt Mnemoniska Frö!</h2>
-        <p>På den följande skärmen kommer du att hitta ditt 25-ord \"Mnemoniska Frö\".
+        <p>På den följande skärmen kommer du att hitta ditt 26-ord \"Mnemoniska Frö\".
         Det här är den enda datan som behövs för att återställa din plånbok i framtiden
         och få full tillgång till dina pengar.
         Att bevara denna data säkert och privat är väldigt viktigt, eftersom det ger <em>vem som helst</em>

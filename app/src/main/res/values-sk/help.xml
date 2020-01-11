@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="help_create_new"><![CDATA[
         <h1>Vytvoriť Peňaženku - Novú</h1>
@@ -7,7 +7,7 @@
         Heslo je určené na zabezpečenie dát peňaženky v tomto zariadení. 
 		Používaj silné heslo - alebo ešte lepšie je použiť frázu.</p>
         <h2>Zapíš si mnemotechnický Seed!</h2>
-        <p>Na nasledujúcej obrazovke uvidíš svoj 25-slovný \"Mnemotechnický Seed\".
+        <p>Na nasledujúcej obrazovke uvidíš svoj 26-slovný \"Mnemotechnický Seed\".
         Sú to dáta potrebné na obnovenie peňaženky a získanie prístupu k Tvojim prostriedkom.
 		Bezpečné uloženie a utajenie týchto dát je veľmi dôležité, keďže pomocou nich <em>hocikto</em> môže získať kontrolu nad vašimi SUMO!</p>
         <p>Ak stratíš heslo do peňaženky, ešte stále si môžeš obnoviť peňaženku so svojím mnemotechnickým Seedom.</p>

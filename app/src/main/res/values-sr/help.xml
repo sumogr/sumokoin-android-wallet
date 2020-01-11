@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="help_create_new"><![CDATA[
         <h1>Create Wallet - New</h1>
@@ -7,7 +7,7 @@
         The password is used for securing your wallet data on the device. Use a strong password -
         even better use a passphrase.</p>
         <h2>Note your Mnemonic Seed!</h2>
-        <p>On the following screen you will find your 25-word \"Mnemonic Seed\".
+        <p>On the following screen you will find your 26-word \"Mnemonic Seed\".
         This is the only data needed to recover your wallet at a later point
         and gain full access to your funds.
         Keeping this secure and private is very important, as it gives <em>anyone</em>

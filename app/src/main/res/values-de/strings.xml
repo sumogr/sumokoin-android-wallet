@@ -288,7 +288,7 @@
     <string name="fab_create_new">Neues Wallet erstellen</string>
     <string name="fab_restore_viewonly">View-Only-Wallet wiederherstellen</string>
     <string name="fab_restore_key">Mit privaten Schlüsseln wiederherstellen</string>
-    <string name="fab_restore_seed">Mit 25-Wörter-Seed wiederherstellen</string>
+    <string name="fab_restore_seed">Mit 26-Wörter-Seed wiederherstellen</string>
 
     <string name="accounts_drawer_new">Konto erstellen</string>
     <string name="accounts_new">Neues Konto #%1$d hinzugefügt</string>
