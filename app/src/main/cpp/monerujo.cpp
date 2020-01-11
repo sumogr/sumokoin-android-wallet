@@ -1397,7 +1397,7 @@ Java_com_sumokoin_sumowallet_model_WalletManager_setLogLevel(JNIEnv *env, jclass
 
 JNIEXPORT jstring JNICALL
 Java_com_sumokoin_sumowallet_model_WalletManager_moneroVersion(JNIEnv *env, jclass clazz) {
-    return env->NewStringUTF(MONERO_VERSION);
+    return env->NewStringUTF(SUMOKOIN_VERSION);
 }
 
 //
