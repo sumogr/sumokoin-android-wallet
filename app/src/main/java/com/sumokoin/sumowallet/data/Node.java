@@ -19,7 +19,7 @@ package com.sumokoin.sumowallet.data;
 import com.sumokoin.sumowallet.model.NetworkType;
 import com.sumokoin.sumowallet.model.WalletManager;
 
-mport java.io.UnsupportedEncodingException;
+import java.io.UnsupportedEncodingException;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.URLDecoder;
@@ -299,7 +299,7 @@ public class Node {
                 DEFAULT_LEVIN_PORT = 19733;
                 break;
             case NetworkType_Testnet:
-                DEFAULT_LEVIN_PORT = 297330;
+                DEFAULT_LEVIN_PORT = 29733;
                 break;
             case NetworkType_Stagenet:
                 DEFAULT_LEVIN_PORT = 39733;
