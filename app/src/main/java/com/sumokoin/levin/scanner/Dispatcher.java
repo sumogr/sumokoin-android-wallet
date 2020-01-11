@@ -72,7 +72,7 @@ public class Dispatcher implements PeerRetriever.OnGetPeers {
                 try {
                     Timber.d("Remaining jobs %d", jobs.size());
                     final PeerRetriever retrievedPeer = jobs.poll().get();
-                    if (retrievedPeer.isMobile Walletod() && getMorePeers())
+                    if (retrievedPeer.isGood() && getMorePeers())
                         retrievePeers(retrievedPeer);
                     final NodeInfo nodeInfo = retrievedPeer.getNodeInfo();
                     Timber.d("Retrieved %s", nodeInfo);
