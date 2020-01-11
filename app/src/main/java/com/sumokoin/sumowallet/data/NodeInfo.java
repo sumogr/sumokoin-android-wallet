@@ -23,7 +23,7 @@ import com.burgstaller.okhttp.digest.Credentials;
 import com.burgstaller.okhttp.digest.DigestAuthenticator;
 import com.sumokoin.levin.scanner.Dispatcher;
 import com.sumokoin.levin.scanner.LevinPeer;
-import com.sumokoin.xmrwallet.util.OkHttpHelper;
+import com.sumokoin.sumowallet.util.OkHttpHelper;
 
 import org.json.JSONException;
 import org.json.JSONObject;
