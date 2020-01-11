@@ -258,15 +258,15 @@ public class NodeFragment extends Fragment
                     }
                 });
                 // also seed with monero seed nodes (see p2p/net_node.inl:410 in monero src)
-                seedList.add(new NodeInfo(new InetSocketAddress("107.152.130.98", 18080)));
-                seedList.add(new NodeInfo(new InetSocketAddress("212.83.175.67", 18080)));
-                seedList.add(new NodeInfo(new InetSocketAddress("5.9.100.248", 18080)));
-                seedList.add(new NodeInfo(new InetSocketAddress("163.172.182.165", 18080)));
-                seedList.add(new NodeInfo(new InetSocketAddress("161.67.132.39", 18080)));
-                seedList.add(new NodeInfo(new InetSocketAddress("198.74.231.92", 18080)));
-                seedList.add(new NodeInfo(new InetSocketAddress("195.154.123.123", 18080)));
-                seedList.add(new NodeInfo(new InetSocketAddress("212.83.172.165", 18080)));
-                seedList.add(new NodeInfo(new InetSocketAddress("192.110.160.146", 18080)));
+                seedList.add(new NodeInfo(new InetSocketAddress("144.217.164.165", 19733)));
+                seedList.add(new NodeInfo(new InetSocketAddress("217.182.76.94", 19733)));
+                seedList.add(new NodeInfo(new InetSocketAddress("46.105.92.1088", 19733)));
+                seedList.add(new NodeInfo(new InetSocketAddress("139.99.193.21", 19733)));
+                seedList.add(new NodeInfo(new InetSocketAddress("139.99.40.69", 19733)));
+                seedList.add(new NodeInfo(new InetSocketAddress("133.18.53.223", 19733)));
+                seedList.add(new NodeInfo(new InetSocketAddress("157.230.187.169", 19733)));
+                seedList.add(new NodeInfo(new InetSocketAddress("157.245.14.220", 19733)));
+                seedList.add(new NodeInfo(new InetSocketAddress("134.209.109.190", 19733)));
                 d.seedPeers(seedList);
                 d.awaitTermination(NODES_TO_FIND);
             }
